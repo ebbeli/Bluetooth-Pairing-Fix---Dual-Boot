@@ -27,9 +27,9 @@ bash bt_key.sh
 3. Boot to Linux again. DON'T TOUCH BLUETOOTH SETTINGS.
 4. Run Script and follow instructions.
 
-5. After copying BT-key. Run MACs.sh if you dont know your bt-adapter's MAC and headphones mac.
+5. After copying BT-key. Run MACs.sh if you dont know your bt-adapter's and headphone's MAC:s.
 
-6. sudo su
+6. Open terminal and sudo su
 
 7. cd var/lib/bluetooth/XX\:XX\:XX\:XX\:XX\:XX (adapters MAC and insert \ before :)
 
