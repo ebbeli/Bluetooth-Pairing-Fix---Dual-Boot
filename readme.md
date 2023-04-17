@@ -18,7 +18,7 @@ Install **chntpw**, a registry editor
 `sudo dnf install chntpw`
 `sudo yum install chntpw`
 
-## 2. How to uuse
+## 2. How to use
 
 bash bt_key.sh
 
