@@ -27,7 +27,7 @@ bash bt_key.sh
 
 7. cd var/lib/bluetooth/XX\:XX\:XX\:XX\:XX\:XX (adapters MAC and insert \ before :)
 
-8.cd XX\:XX\:XX\:XX\:XX (Device MAC. Insert \:s)
+8. cd XX\:XX\:XX\:XX\:XX (Device MAC. Insert \:s)
 
 9. There replace Key value under [LinkKey] with your BT-key. Remove spaces.
 
