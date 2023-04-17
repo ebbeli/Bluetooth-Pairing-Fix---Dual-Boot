@@ -1,4 +1,10 @@
+# Script to fix dual boot pairing problem with headphones
+
 Script for finding bluetooth key for dual boot machine with Linux & Windows.
+
+Find adapters BT-key for windows and use it with Linux.
+
+Pairing problems cause is same adapter and device, but different OS/software.
 
 Works with Bluetooth headphones. Not sure about anything else.
 
