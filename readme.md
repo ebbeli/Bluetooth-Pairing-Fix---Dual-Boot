@@ -2,7 +2,7 @@ Script for finding bluetooth key for dual boot machine with Linux & Windows.
 
 Works with Bluetooth headphones. Not sure about anything else.
 
-Automated from from: https://wiki.archlinux.org/index.php/Bluetooth#Dual_boot_pairing
+Automated from : https://wiki.archlinux.org/index.php/Bluetooth#Dual_boot_pairing
 
 ## 1. Prerequisites/Depencies
 
