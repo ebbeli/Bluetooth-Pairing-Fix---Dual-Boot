@@ -1,16 +1,14 @@
-# Script to fix dual boot pairing problem with headphones
+# Shell-script for fixing dual boot machine's pairing problem with bluetooth headphones
 
-Script for finding bluetooth key for dual boot machine with Linux & Windows.
+Script for configuring bluetooth pairing key as same with both operating systems in dual boot machine. (Linux & Windows)
 
-Find adapters BT-key for windows and use it with Linux.
+Cause of problem is simple, after pairing device and adapter tries to use one stored key when reconnecting with familiar MAC-addresses. In dual boot both operating systems use own pairing keys, but have same MAC-addresses due shared hardware. Which causes misconfiguration when you try to reconnect paired bluetooth device after switching between operating systems.
 
-Pairing problems cause is same adapter and device, but different OS/software.
+Script finds device's pairing key from Window's partition so you can configure your GNU/Linux-OS with it. Tested & works with bluetooth headphones. Not sure about anything else.
 
-Works with Bluetooth headphones. Not sure about anything else.
+Based on: https://wiki.archlinux.org/index.php/Bluetooth#Dual_boot_pairing
 
-Automated from : https://wiki.archlinux.org/index.php/Bluetooth#Dual_boot_pairing
-
-## 1. Prerequisites/Depencies
+## 1. Prerequisites / dependencies
 
 Install **chntpw**, a registry editor
 
@@ -20,26 +18,32 @@ Install **chntpw**, a registry editor
 
 ## 2. How to use
 
-bash bt_key.sh
-
 1. Boot to Linux. Pair BT-Headphones in Linux. Shutdown.
 
 2. Boot to Windows. Pair BT-Headphones. Shutdown.
 
 3. Boot to Linux again. DON'T TOUCH BLUETOOTH SETTINGS.
 
-4. Run Script and follow instructions.
+4. Open terminal, run script and follow instructions.
 
-5. After copying BT-key. Run MACs.sh if you dont know your bt-adapter's and headphone's MAC:s.
+- `$ bash bt_key.sh`
 
-6. Open terminal and sudo su
+5. After completion. Run MACs.sh if you dont know your bt-adapter's and headphone's MAC:s.
 
-7. cd var/lib/bluetooth/XX\:XX\:XX\:XX\:XX\:XX (adapters MAC and insert \ before :)
+- `$ bash MAC.sh`
 
-8. cd XX\\:XX\\:XX\\:XX\\:XX (Device MAC. Insert \\:s)
+6. Open another terminal as root and enter commands.
 
-9. There replace Key value under [LinkKey] with your BT-key. Remove spaces.
+- `$ sudo su`
 
-10. Restart Bluetooth and your headphones should connect.
+- `$ cd var/lib/bluetooth/XX\:XX\:XX\:XX\:XX\:XX` (Adapters MAC. Insert "\\" before each ":" )
+
+- `$ cd XX\:XX\:XX\:XX\:XX` (Device MAC.)
+
+7. Open info file from current folder andreplace Key value under [LinkKey] with your extracted bluetooth key. Remove spaces.
+
+- `$ nano info`
+
+8. Restart Bluetooth and your headphones should connect.
 
 #### Ps. I'm making second script for replacing the key, when I have time.
