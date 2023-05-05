@@ -1,22 +1,31 @@
 #!bin/bash/
-echo "1.Pair your BT-device first in Linux/GNU and after that in Windows. Don't pair or unpair after that. Continue if ready.."
+echo "1.Mount your Windows partition using disks tool and pair your BT-device first in Linux/GNU and after that in Windows. Don't pair or unpair after that. Continue if ready.."
 
 read
 
 a=$(bluetoothctl list | sed 's/://g')
-echo "$a"
 b=${a:11:12}
 adapter=$(echo $b | tr '[:upper:]' '[:lower:]')
 
-bluetoothctl devices
+#!bin/bash/
+mapfile -t devices < <( bluetoothctl devices )
  
- echo "2.Choose your bluetooth device from the list and write/copy its MAC-address (XX:XX:XX:XX:XX:XX) to continue:"
+ echo "Choose your bluetooth device from the list:"
+select choice in "${devices[@]}"; do
+  [[ -n $choice ]] || { echo "Invalid choice. Please try again." >&2; continue; }
+  break # valid choice was made; exit prompt.
+done
 
- read vardevice
+vardevice=$(echo $choice | grep -oE '([ :][[:xdigit:]]{2}){6}')
+
 
 device=$(echo $vardevice | sed 's/://g' | tr '[:upper:]' '[:lower:]')
 
 echo "$device"
+
+
+mkdir disk
+
 
 lsblk
  
@@ -25,25 +34,31 @@ lsblk
  read vardisk
  
  echo $vardisk 
-address=$vardisk/Windows/System32/config
+address=$vardisk/Windows/System32/config/
 
  cd $address
 
-btAddr="cd ControlSet001\Services\BTHPORT\Parameters\Key"\\"$adapter"\\"$device"
+btAddr="cd ControlSet001\Services\BTHPORT\Parameters\Key"\\"$adapter"\\
 
 clear
 
-echo "$btAddr"
 
-echo "4.Copy command from above and press enter" \ && 
+echo "6. You will get two commands to use after this step. Paste commands in given order after _SEVENTH STEP_. After that you will see something like:"
+echo "Value <e8d03c148708> of type REG_BINARY (3), data length 16 [0x10]
+:00000  F0 31 8F 05 AB 37 0D D9 AB 76 2B 4C 6F FF 7A AC .1...7...v+Lo.z."
+
+echo ""
+echo "6.1 Copy the Bluetooth pairing key:( F0 31 8F 05 AB 37 0D D9 AB 76 2B 4C 6F FF 7A AC ), It's HEX binary code with 16 pairs of random letters and numbers."
 
 read
-echo "5. After using the command after this you will see something like: Value <104fa875c82e> of type REG_BINARY (3), data length 16 [0x10]
-:00000  54 80 E3 E3 01 49 3A E3 E4 8C 5A 74 18 E8 25 54 T....I:...Zt..%T"
 
+echo "6.2:  $btAddr"
+echo ""
 read
-
-echo "6. Copy the Bluetooth pairing key:(54 80 E3 E3 01 49 3A E3 E4 8C 5A 74 18 E8 25 54), it's random letter and number in pairs"
+echo "6.3:  hex $device"
+echo ""
+read
+echo "7. Copy/Paste or write commands 6.2 and 6.3 at given order in the next prompt. After second command follow previous step to copy the right value. After copying it, press Ctrl+C to exit and follow directions on README.md to configure Linux to use it."
 
 read
 

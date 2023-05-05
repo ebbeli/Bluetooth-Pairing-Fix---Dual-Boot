@@ -23,8 +23,11 @@ Install **chntpw**, a registry editor
 bash bt_key.sh
 
 1. Boot to Linux. Pair BT-Headphones in Linux. Shutdown.
+
 2. Boot to Windows. Pair BT-Headphones. Shutdown.
+
 3. Boot to Linux again. DON'T TOUCH BLUETOOTH SETTINGS.
+
 4. Run Script and follow instructions.
 
 5. After copying BT-key. Run MACs.sh if you dont know your bt-adapter's and headphone's MAC:s.
@@ -39,4 +42,4 @@ bash bt_key.sh
 
 10. Restart Bluetooth and your headphones should connect.
 
-## Ps. I'm making second script for replacing the key, when I have time. Leave comment if something isn't working.
+#### Ps. I'm making second script for replacing the key, when I have time. Leave comment if something isn't working.
