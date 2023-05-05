@@ -42,4 +42,4 @@ bash bt_key.sh
 
 10. Restart Bluetooth and your headphones should connect.
 
-#### Ps. I'm making second script for replacing the key, when I have time. Leave comment if something isn't working.
+#### Ps. I'm making second script for replacing the key, when I have time.
